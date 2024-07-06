@@ -1,0 +1,10 @@
+.products-container .d-flex {
+    display: flex;
+    flex-wrap: wrap;  
+    flex-direction: row; 
+    justify-content: start;
+}
+.product-link .card {
+    width: 18rem;  
+    margin: 0.5rem; 
+}

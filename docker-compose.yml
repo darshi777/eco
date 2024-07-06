@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: serverapp_c
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      NODE_ENV: development
+      JWT_SECRET: ${JWT_SECRET}
+
+  client:
+    build:
+      context: .
+      dockerfile: ./client/Dockerfile.client
+    container_name: clientapp_c
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/usr/src/app/client
+      - /usr/src/app/client/node_modules
+    environment:
+      NODE_ENV: development
