@@ -13,6 +13,7 @@ const CreateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [carbon, setCarbon] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
@@ -43,6 +44,7 @@ const CreateProduct = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
+      productData.append("carbon", carbon);
       productData.append("quantity", quantity);
       productData.append("photo", photo);
       productData.append("category", category);
@@ -138,6 +140,15 @@ const CreateProduct = () => {
                   placeholder="write a Price"
                   className="form-control"
                   onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={carbon}
+                  placeholder="write a carbon footprint"
+                  className="form-control"
+                  onChange={(e) => setCarbon(e.target.value)}
                 />
               </div>
               <div className="mb-3">

@@ -14,7 +14,7 @@ const CartPage = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  
+
 
   //total price
   const totalPrice = () => {
@@ -32,23 +32,39 @@ const CartPage = () => {
     }
   };
 
- // Function to calculate Eco Impact Price, which is 10% of the total price
-const impactPrice = () => {
-  try {
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.price;
-    });
-    let impact = total * 0.09; // Calculate 10% of the total
-    return impact.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-  } catch (error) {
-    console.log(error);
-    return "0"; // Return 0 if there's an error
-  }
-};
+  const totalCarbonFootprint = () => {
+    try {
+      let total = 0;
+      cart?.forEach((item) => {
+        const carbonValue = Number(item.carbon); // Convert to number
+        if (!isNaN(carbonValue)) { // Check if it's a valid number
+          total += carbonValue; // Add to total if valid
+        }
+      });
+      return total.toLocaleString("en-US") + " kg CO2e"; // Format the output
+    } catch (error) {
+      console.log(error);
+      return "0 kg CO2e"; // Return a default value in case of error
+    }
+  };
+
+  // Function to calculate Eco Impact Price, which is 10% of the total price
+  const impactPrice = () => {
+    try {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.price;
+      });
+      let impact = total * 0.09; // Calculate 10% of the total
+      return impact.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      });
+    } catch (error) {
+      console.log(error);
+      return "0"; // Return 0 if there's an error
+    }
+  };
 
   //detele item
   const removeCartItem = (pid) => {
@@ -101,15 +117,14 @@ const impactPrice = () => {
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center bg-light p-2 mb-1">
-            {!auth?.user
+              {!auth?.user
                 ? "Hello Guest"
                 : `Hello  ${auth?.token && auth?.user?.name}`}
             </h1>
             <h4 className="text-center">
               {cart?.length
-                ? `You Have ${cart.length} items in your cart ${
-                    auth?.token ? "" : "please login to checkout"
-                  }`
+                ? `You Have ${cart.length} items in your cart ${auth?.token ? "" : "please login to checkout"
+                }`
                 : " Your Cart Is Empty"}
             </h4>
           </div>
@@ -131,6 +146,7 @@ const impactPrice = () => {
                   <p>{p.name}</p>
                   <p>{p.description.substring(0, 30)}</p>
                   <p>Price : {p.price}</p>
+                  <p>Carbon Footprint : {p.carbon}</p>
                   <button
                     className="btn btn-danger"
                     onClick={() => removeCartItem(p._id)}
@@ -147,6 +163,7 @@ const impactPrice = () => {
             <p>Biodegradable Peanuts|Corrugated BubbleWrap</p>
             <hr />
             <h4>Total : {totalPrice()} </h4>
+            <h4>Carbon Footprint : {totalCarbonFootprint()} </h4>
             <h4>Eco Impact Savings: {impactPrice()} </h4>
             {auth?.user?.address ? (
               <>

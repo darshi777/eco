@@ -14,6 +14,7 @@ const UpdateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [carbon, setCarbon] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
@@ -31,6 +32,7 @@ const UpdateProduct = () => {
       setDescription(data.product.description);
       setPrice(data.product.price);
       setPrice(data.product.price);
+      setCarbon(data.product.carbon);
       setQuantity(data.product.quantity);
       setShipping(data.product.shipping);
       setCategory(data.product.category._id);
@@ -67,6 +69,7 @@ const UpdateProduct = () => {
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
+      productData.append("carbon", carbon);
       productData.append("quantity", quantity);
       photo && productData.append("photo", photo);
       productData.append("category", category);
@@ -187,6 +190,15 @@ const UpdateProduct = () => {
                   placeholder="write a Price"
                   className="form-control"
                   onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <input
+                  type="number"
+                  value={carbon}
+                  placeholder="write a Carbon Footprint"
+                  className="form-control"
+                  onChange={(e) => setCarbon(e.target.value)}
                 />
               </div>
               <div className="mb-3">

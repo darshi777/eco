@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [cart, setCart] = useCart();
-  
+
   //initalp details
   useEffect(() => {
     if (params?.slug) getProduct();
@@ -64,17 +64,20 @@ const ProductDetails = () => {
             })}
           </h6>
           <h6>Category : {product?.category?.name}</h6>
+          <h6>
+            Carbon Footprint : {product?.carbon?.toLocaleString("en-US")} kg CO2e
+          </h6>
           <button
-  className="btn btn-dark ms-1"
-  onClick={() => {
-    setCart([...cart, product]); // Use 'product' instead of 'p'
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([...cart, product]) // Use 'product'
-    );
-    toast.success("Item Added to cart");
-  }}
->ADD TO CART</button>
+            className="btn btn-dark ms-1"
+            onClick={() => {
+              setCart([...cart, product]); // Use 'product' instead of 'p'
+              localStorage.setItem(
+                "cart",
+                JSON.stringify([...cart, product]) // Use 'product'
+              );
+              toast.success("Item Added to cart");
+            }}
+          >ADD TO CART</button>
         </div>
 
       </div>
@@ -112,19 +115,19 @@ const ProductDetails = () => {
                   >
                     More Details
                   </button>
-                   <button
-                  className="btn btn-dark ms-1"
-                  onClick={() => {
-                    setCart([...cart, p]);
-                    localStorage.setItem(
-                      "cart",
-                      JSON.stringify([...cart, p])
-                    );
-                    toast.success("Item Added to cart");
-                  }}
-                >
-                  ADD TO CART
-                </button>
+                  <button
+                    className="btn btn-dark ms-1"
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      localStorage.setItem(
+                        "cart",
+                        JSON.stringify([...cart, p])
+                      );
+                      toast.success("Item Added to cart");
+                    }}
+                  >
+                    ADD TO CART
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,70 +1,99 @@
-/* Dashboard Styles */
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .dashboard {
-    background-color: #f8f9fa;
-    min-height: 100vh;
-  }
-  
-  .user-menu {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-top: 20px;
-  }
-  
-  .card h3 {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Ensures the card stretches to fit the width of the container */
-  .card.w-75 {
-    width: 100%;
-  }
-  
-  /* Styling for the UserMenu component if it's a separate component */
-  .user-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .user-menu li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .user-menu li a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .user-menu li:last-child {
-    border-bottom: none;
-  }
-  
-  .user-menu a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive grid adjustments */
-  @media (max-width: 768px) {
-    .dashboard .row {
-      flex-direction: column;
-    }
-  
-    .dashboard .col-md-3 {
-      margin-bottom: 20px;
-    }
-  
-    .card.w-75 {
-      width: auto;
-    }
-  }
-  
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-3,
+.col-md-9 {
+  padding: 15px;
+}
+
+.user-menu {
+  background-color: #a5d6a7;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h3,
+h2 {
+  color: #388e3c;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  background-color: #f1f8e9;
+}
+
+.form-control:focus {
+  border-color: #66bb6a;
+  box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
+}
+
+.btn-primary {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #388e3c;
+  border-color: #388e3c;
+  box-shadow: 0 4px 8px rgba(56, 142, 60, 0.3);
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+h4 {
+  color: #2e7d32;
+  font-weight: bold;
+}

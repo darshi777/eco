@@ -18,6 +18,10 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    carbon: {
+      type: Number,
+      required: true,
+    },
     category: {
       type: mongoose.ObjectId,
       ref: "Category",

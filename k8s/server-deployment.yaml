@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+  namespace: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server
+        image: darshi666/server:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGO_URL
+          value: "mongodb://mongodb-service.my-app.svc.cluster.local:27017/ecommerce"
